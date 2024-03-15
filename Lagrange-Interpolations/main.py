@@ -1,16 +1,16 @@
-# This is a sample Python script.
+from numpy import ndarray, arange, array
+from numpy import sqrt, sin, power
+from lagrange.LagrangeInterpolation import LagrangeInterpolation
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+x: ndarray = arange(0, 15, 1)
+y: ndarray = sin(x) * sqrt(x) / (power(x, 2) + 1)
 
+interp = LagrangeInterpolation(x=x, y=y)
+predicted_value: float = interp.predict_value(x=2.25)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+predicted_values = interp.predict_values(
+    array([1.25, 2.75, 3.63,
+           4.47, 5.51, 6.29,
+           7.99, 8.001, 9.13])
+)
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
